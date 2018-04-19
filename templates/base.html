@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+    <!--<style type="text/css">
+        .alinhaCentro {
+           display: block;
+           margin-left: 50%;
+            margin-right: 50%;
+            width: 400px;
+        }
+    </style>-->
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a href="/" class="navbar-item">
+            <img src="{% static 'img/logo_vertical.jpg' %}" alt="" width="112" height="28">
+        </a>
+        <div class="navbar-burger burger" data-target="nav-data">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <div class="navbar-menu" id="nav-data">
+        <a href="/" class="navbar-item">Home</a>
+        <a href="{% url 'register' %}" class="nav-item">Register</a>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a href="{% url 'logout' %}" class="button is-primary">
+                            <span>LOGOUT</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
+{% block heading %}  {% endblock %}
+
+{%  block content %}
+
+{%  endblock %}
+
+<script src="{% static 'js/navbar-burger.js' %}"></script>
+
+</body>
+</html>

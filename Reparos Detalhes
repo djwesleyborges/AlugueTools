@@ -1,0 +1,5 @@
+Colocar validação exemplo:
+
+Tela de login: Retornar mensagem dizendo que a usuario ou senha estão incorretos.
+
+Tela de cadastro de usuarios colocar mensagens de erro caso ja exista usuario e email e validar as senhas.

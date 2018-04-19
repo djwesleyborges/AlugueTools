@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    Register
+{% endblock %}
+{% block content %}
+	<div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter">
+
+                <body class="text-center">
+                    <form method="post" class="text-center" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <img class="mb-4" src="{% static 'img/1.PNG' %}" alt="" width="150" height="150">
+                        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+
+	                    {{ form.first_name }}
+
+	                    {{ form.last_name }}
+
+	                    {{ form.username }}
+
+	                    {{ form.email }}
+
+						{{ form.password }}
+
+	                    {{ form.password2 }}
+
+	                    {% if form.errors %}
+
+		                    {{ form.non_field_errors }}
+
+	                    {% endif %}
+                        </br>
+                        <button class="btn btn-lg button is-primary btn-block" type="submit">Sign in</button>
+                        <p class="mt-5 mb-3 text-muted">&copy; Wesley Borges - 2018</p>
+                    </form>
+                </body>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
