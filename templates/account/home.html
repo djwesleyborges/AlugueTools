@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ request.user }}
+{% endblock %}
+{% block content %}
+    <p>Hello user: {{ request.user }}</p>
+    <p>Name: {{ request.user.first_name }} {{ request.user.last_name }}</p>
+    <p>E-mail: {{ request.user.email }}</p>
+    <p>Address: {{ request.user.profile.address }}</p>
+    <p>City: {{ request.user.profile.city }}</p>
+	<p>Data de Nascimento: {{ request.user.profile.birth_date }}</p>
+{% endblock %}
