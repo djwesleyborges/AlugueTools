@@ -1,14 +1,31 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block title %}
-    Login
-{% endblock %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'site.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
     <div class="container">
         <div class="columns is-mobile">
             <div class="column is-half is-offset-one-quarter">
 
                 <body class="text-center">
+				        <div class="navbar-menu" id="nav-data">
+				        <div class="navbar-end">
+				            <div class="navbar-item">
+				                <div class="field is-grouped">
+				                    <p class="control">
+				                            <span>
+				                            </span>
+				                        </a>
+				                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
                     <form class="text-center" action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     <img class="mb-4" src="{% static 'img/1.PNG' %}" alt="" width="150" height="150">
@@ -23,13 +40,16 @@
                                     placeholder="Password" required>
 
 		                {% if form.errors %}
-		                    <p class=" label label-danger">
+		                    <p class=" label label-danger cor_Error">
 		                        Your username and password didn't match. Please try again.
 		                    </p>
 		                {% endif %}
 
                         <label><input type="checkbox" value="remember-me"> Remember me</label>
                         <button class="btn btn-lg button is-primary btn-block" type="submit">Login</button>
+                        <a href="{% url 'register' %}" class="btn btn-lg button is-primary btn-block">
+                            <span>Register</span>
+                        </a>
 	                    <p class="mt-5 mb-3 text-muted">&copy; Wesley Borges - 2018</p>
                     </form>
                 </body>
@@ -37,8 +57,6 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
 
 {#{% extends 'base.html' %}#}
 {#{% load staticfiles %}#}

@@ -17,17 +17,17 @@ class RegisterUserView(TemplateView):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            raw_password = form.cleaned_data.get('password')
+            raw_password = form.cleaned_data.get('password') # password criptografado
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('dashboard')
+            return redirect('home')
         args = {'form': form}
         return render(request, self.template_name, args)
 
 
 @method_decorator(login_required, name='dispatch')
-class DashboardView(TemplateView):
-    template_name = 'account/dashboard.html'
+class HomeView(TemplateView):
+    template_name = 'account/home.html'
 
     def dispatch(self, request, *args, **kwargs):
-        return super(DashboardView, self).dispatch(request, *args, **kwargs)
+        return super(HomeView, self).dispatch(request, *args, **kwargs)

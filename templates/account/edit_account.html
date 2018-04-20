@@ -1,0 +1,27 @@
+{% extends 'account/panel.html' %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+	<li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+{% endblock %}
+
+{% block panel_content %}
+
+	<form class="pure-form" method="post">
+
+		<fieldset>
+			{{ form.non_field_errors }}
+			{% for field in form %}
+			<div class="pure-control-group">
+				{{ field.label_tag }}
+				{{ field }}
+				{{ field.errors }}
+			</div>
+			{% endfor %}
+			<div class="pure-controls">
+				<button type="submit" class="pure-button pure-button-primary">Send</button>
+			</div>
+		</fieldset>
+	</form>
+
+{% endblock %}

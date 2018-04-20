@@ -59,3 +59,25 @@ class RegisterUserForm(forms.ModelForm):
         return user
 
 
+class EditAccountForm(forms.ModelForm):
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        queryset = User.objects.filter(email=email).exclude(pk=self.instance.pk)
+        if queryset.exists():
+            raise forms.ValidationError('A user with that e-mail already exists.')
+        return email
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'password']
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'email': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'password': forms.TextInput(
+                attrs={'class': 'form-control'})
+        }

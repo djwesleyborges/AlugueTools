@@ -5,47 +5,39 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'site.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-
-    <!--<style type="text/css">
-        .alinhaCentro {
-           display: block;
-           margin-left: 50%;
-            margin-right: 50%;
-            width: 400px;
-        }
-    </style>-->
-
+	<link rel="stylesheet" href="{% static 'pure/pure-min.css' %}">
+	<link rel="stylesheet" href="{% static 'pure/styles.css' %}">
 </head>
+
 <body>
-<nav class="navbar">
+{% if user.is_authenticated %}
+<nav class="navbar-menu">
     <div class="navbar-brand">
         <a href="/" class="navbar-item">
             <img src="{% static 'img/logo_vertical.jpg' %}" alt="" width="112" height="28">
         </a>
-        <div class="navbar-burger burger" data-target="nav-data">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+
     </div>
-
-
     <div class="navbar-menu" id="nav-data">
-        <a href="/" class="navbar-item">Home</a>
-        <a href="{% url 'register' %}" class="nav-item">Register</a>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                    <p class="control">
-                        <a href="{% url 'logout' %}" class="button is-primary">
-                            <span>LOGOUT</span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        <a href="{% url 'home' %}" class="navbar-item">Home</a>
+        <a href="{% url 'panel_user' %}" class="navbar-item">Panel</a>
+
+	        <div class="navbar-end">
+	            <div class="navbar-item">
+	                <div class="field is-grouped">
+	                    <p class="control">
+	                        <a href="{% url 'logout' %}" class="button is-primary">
+	                            <span>Logout</span>
+	                        </a>
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    {% else %}
     </div>
+{% endif %}
 
 </nav>
 {% block heading %}  {% endblock %}
