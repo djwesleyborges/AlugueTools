@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 class RegisterUserForm(forms.ModelForm):
@@ -59,3 +60,46 @@ class RegisterUserForm(forms.ModelForm):
         return user
 
 
+class EditAccountForm(forms.ModelForm):
+    address = forms.CharField()
+    city = forms.CharField()
+    birth_date = forms.CharField()
+    phone = forms.CharField()
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'address', 'city', 'birth_date', 'phone']
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'email': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'address': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'city': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'birth_date': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(
+                attrs={'class': 'form-control'})
+        }
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        queryset = User.objects.filter(email=email).exclude(pk=self.instance.pk)
+        if queryset.exists():
+            raise forms.ValidationError('A user with that e-mail already exists.')
+        return email
+
+
+class PasswordChangeCustomForm(PasswordChangeForm):
+    def __init__(self, user, *args, **kwargs):
+        super(PasswordChangeCustomForm, self).__init__(user, *args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+            # A implementacao acima compacta esta abaixo em um for.
+            # self.fields['old_password'].widget.attrs.update({'class': 'form-control'})
+            # self.fields['new_password1'].widget.attrs.update({'class': 'form-control'})
+            # self.fields['new_password2'].widget.attrs.update({'class': 'form-control'})

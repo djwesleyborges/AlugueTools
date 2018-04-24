@@ -4,10 +4,16 @@
     Register
 {% endblock %}
 {% block content %}
+	<nav class="navbar-menu">
+		<span>
+			<div class="badge">
+			</div>
+		</span>
+	</nav>
+
 	<div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="columns is-mobile">
             <div class="column is-half is-offset-one-quarter">
-
                 <body class="text-center">
                     <form method="post" class="text-center" action="{% url 'register' %}">
                         {% csrf_token %}
@@ -26,13 +32,17 @@
 
 	                    {{ form.password2 }}
 
-	                    {% if form.errors %}
-
+	                    <div class="cor_Error">
+                            {% if form.errors %}
 		                    {{ form.non_field_errors }}
+	                        {% endif %}
+                        </div>
 
-	                    {% endif %}
                         </br>
                         <button class="btn btn-lg button is-primary btn-block" type="submit">Sign in</button>
+                        <a href="{% url 'login' %}" class="btn btn-lg button is-primary btn-block">
+                            <span>Login</span>
+                        </a>
                         <p class="mt-5 mb-3 text-muted">&copy; Wesley Borges - 2018</p>
                     </form>
                 </body>
