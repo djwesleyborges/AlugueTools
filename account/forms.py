@@ -4,6 +4,20 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 
 class RegisterUserForm(forms.ModelForm):
+    # password = forms.RegexField(label='Password', regex='^(?=.*\W+).*$',
+    #                             help_text='Password must be six characters long and contain at least one '
+    #                                       'non-alphanumeric character.',
+    #                             widget=forms.PasswordInput(
+    #                                 attrs={'class': 'form-control', 'placeholder': 'Password'})
+    #                             )
+    #
+    # password2 = forms.RegexField(label='Password confirmation', regex='^(?=.*\W+).*$',
+    #                              help_text='Password must be six characters long and contain at least one '
+    #                                        'non-alphanumeric character.',
+    #                              widget=forms.PasswordInput(
+    #                                  attrs={'class': 'form-control', 'placeholder': 'Password Confirmation'})
+    #                              )
+
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Password'}))
     password2 = forms.CharField(widget=forms.PasswordInput(

@@ -1,31 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'site.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-</head>
-    <div class="container">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    Register
+{% endblock %}
+{% block content %}
+	<nav class="navbar-menu">
+		<span>
+			<div class="badge">
+			</div>
+		</span>
+	</nav>
+
+	<div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="columns is-mobile">
             <div class="column is-half is-offset-one-quarter">
-
                 <body class="text-center">
-				        <div class="navbar-menu" id="nav-data">
-				        <div class="navbar-end">
-				            <div class="navbar-item">
-				                <div class="field is-grouped">
-				                    <p class="control">
-				                            <span>
-				                            </span>
-				                        </a>
-				                    </p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
                     <form method="post" class="text-center" action="{% url 'account:register' %}">
                         {% csrf_token %}
                         <img class="mb-4" src="{% static 'img/1.PNG' %}" alt="" width="150" height="150">
@@ -61,3 +50,4 @@
             </div>
         </div>
     </div>
+{% endblock %}

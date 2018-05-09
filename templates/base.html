@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
     <link rel="stylesheet" href="{% static 'site.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-	<link rel="stylesheet" href="{% static 'pure/pure-min.css' %}">
-	<link rel="stylesheet" href="{% static 'pure/styles.css' %}">
 </head>
 
 <body>
@@ -21,14 +19,15 @@
 
     </div>
     <div class="navbar-menu" id="nav-data">
-        <a href="{% url 'home' %}" class="navbar-item">Home</a>
-        <a href="{% url 'panel_user' %}" class="navbar-item">Panel</a>
+        <a href="{% url 'account:home' %}" class="navbar-item">Home</a>
+        <a href="{% url 'account:panel_user' %}" class="navbar-item">Panel</a>
+        <a href="{% url 'catalog:product_list' %}" class="navbar-item">Catalog</a>
 
 	        <div class="navbar-end">
 	            <div class="navbar-item">
 	                <div class="field is-grouped">
 	                    <p class="control">
-	                        <a href="{% url 'logout' %}" class="button is-primary">
+	                        <a href="{% url 'account:logout' %}" class="button is-primary">
 	                            <span>Logout</span>
 	                        </a>
 	                    </p>

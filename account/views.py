@@ -1,5 +1,7 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+
 from account.forms import RegisterUserForm
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
@@ -11,7 +13,8 @@ class RegisterUserView(TemplateView):
 
     def get(self, request):
         form = RegisterUserForm()
-        return render(request, self.template_name, {'form': form})
+        context = {'form': form}
+        return render(request, self.template_name, context)
 
     def post(self, request):
         form = RegisterUserForm(request.POST)
@@ -20,7 +23,7 @@ class RegisterUserView(TemplateView):
             raw_password = form.cleaned_data.get('password') # password criptografado
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect(reverse_lazy('account:home'))
         args = {'form': form}
         return render(request, self.template_name, args)
 
@@ -31,3 +34,17 @@ class HomeView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         return super(HomeView, self).dispatch(request, *args, **kwargs)
+
+
+def do_login(request):
+    if request.method == 'POST':
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            login(request, user)
+            return render(request, 'account/home.html', {'user': user})
+    return render(request, 'account/login.html')
+
+
+def do_logout(request):
+    logout(request)
+    return redirect(reverse_lazy('account:login'))

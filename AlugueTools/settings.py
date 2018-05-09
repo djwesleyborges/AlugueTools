@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.CoreConfig',
     'app_profile.apps.AppProfileConfig',
+    'catalog.apps.CatalogConfig',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # apps
+                #'catalog.context_process.categories'
             ],
         },
     },
@@ -138,9 +141,15 @@ LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
+# #MEDIA
+# MEDIA_URL = 'http://127.0.0.1:8000/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+#MEDIA
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+# MEDIA_ROOT = "{}/media".format(BASE_DIR)
+print(MEDIA_ROOT)
 
 
 EMAIL_HOST = 'smtp.gmail.com'

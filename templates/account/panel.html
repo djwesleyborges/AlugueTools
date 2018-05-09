@@ -8,7 +8,7 @@
 	<div class="pure-u-1">
 		<ul class="breadcrumb">
 			{% block  breadcrumb%}
-				<li><a href="{% url 'panel_user' %}">My Panel</a></li>
+				<li><a href="{% url 'account:panel_user' %}">My Panel</a></li>
 			{% endblock %}
 		</ul>
 	</div>
@@ -23,8 +23,8 @@
                 <div class="divider"></div>
                 <div class="pure-u-1-3">
 		            <ul>
-			            <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
-                        <li><a href="{% url 'edit_password' %}">Edit Password</a></li>
+			            <li><a href="{% url 'account:edit_account' %}">Edit Account</a></li>
+                        <li><a href="{% url 'account:edit_password' %}">Edit Password</a></li>
 		            </ul>
                 </div>
 	            <div class="pure-u-2-3">
