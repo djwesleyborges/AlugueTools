@@ -30,6 +30,7 @@
 	            <div class="pure-u-2-3">
 		            <div class="form-control">
 			            {% block panel_content %}
+                            <p><strong>Name</strong>: {{ user.first_name }} {{ user.last_name }}</p>
 				            <p><strong>User</strong>: {{ user }}</p>
 				            <p><strong>E-mail</strong>: {{ user.email }}</p>
 			            {% endblock %}

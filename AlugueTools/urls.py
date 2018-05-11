@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('account.urls', namespace='account')),
     url(r'^catalog/', include('catalog.urls', namespace='catalog')),
+    url(r'^contact/', include('core.urls', namespace='contact')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Utilizado para imprimir imagens de media na tela.

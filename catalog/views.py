@@ -2,9 +2,15 @@ from django.shortcuts import render
 from catalog.models import Category, Product
 
 
-def product_list(request):
+# def product_list(request):
+#     context = {
+#         'product_list': Product.objects.all()
+#     }
+#     return render(request, 'product/product_list.html', context)
+
+def catalog_list(request):
     context = {
-        'product_list': Product.objects.all()
+        'product_list': Category.objects.all()
     }
     return render(request, 'product/product_list.html', context)
 

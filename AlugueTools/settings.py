@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # apps
     'account.apps.CoreConfig',
     'app_profile.apps.AppProfileConfig',
     'catalog.apps.CatalogConfig',
+
+    # libs
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -152,6 +156,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 print(MEDIA_ROOT)
 
 
+# Envio de e-mail usando os modulo AUTHENTICATION_BACKENDS acima.
 EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 465  # (SSL exigido)
 EMAIL_PORT = 587  # (TLS exigido)

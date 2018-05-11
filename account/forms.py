@@ -75,10 +75,10 @@ class RegisterUserForm(forms.ModelForm):
 
 
 class EditAccountForm(forms.ModelForm):
-    address = forms.CharField()
-    city = forms.CharField()
-    birth_date = forms.CharField()
-    phone = forms.CharField()
+    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -89,14 +89,6 @@ class EditAccountForm(forms.ModelForm):
             'last_name': forms.TextInput(
                 attrs={'class': 'form-control'}),
             'email': forms.TextInput(
-                attrs={'class': 'form-control'}),
-            'address': forms.TextInput(
-                attrs={'class': 'form-control'}),
-            'city': forms.TextInput(
-                attrs={'class': 'form-control'}),
-            'birth_date': forms.TextInput(
-                attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(
                 attrs={'class': 'form-control'})
         }
 

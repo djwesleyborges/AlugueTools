@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
 class Category(models.Model):
     name = models.CharField('Name', max_length=100)
     slug = models.SlugField('Unique identifier', max_length=100)
