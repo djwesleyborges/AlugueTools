@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1><p>{{ product.name }}</p></h1>
+    <h1><a href="{{ product.get_absolute_url }}">{{ product }}</a></h1>
     <p>{{ product.description }}</p>
 {% endblock %}

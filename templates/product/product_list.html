@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Products</h2>
-    {% for product in product_list %}
-        <a href="{{ product.get_absolut_url }}"><h3>{{ product }}</h3></a>
-        {{ product.description| linebreaks }}
+    <h2>Categories</h2>
+    {% for category in category_list %}
+        <a href="{{ category.get_absolut_url }}"><h3>{{ category }}</h3></a>
+        {{ category.description| linebreaks }}
     {% endfor %}
 {% endblock %}

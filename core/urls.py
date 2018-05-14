@@ -3,6 +3,7 @@ from core import views
 
 urlpatterns = [
     url(r'^$', views.contact, name='contact'),
+    #  url(r'^$', views.ContactView.as_view(), name='contact'),
 ]
 
 '''
