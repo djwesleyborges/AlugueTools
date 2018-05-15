@@ -2,7 +2,6 @@ from django.shortcuts import render
 from core.forms import ContactForm
 
 
-
 def contact(request):
     success = False
     form = ContactForm(request.POST or None)
@@ -10,5 +9,5 @@ def contact(request):
         form.send_mail()
         success = True
     context = {'form': form,
-                   'success': success}
+               'success': success}
     return render(request, 'contact/contact.html', context)

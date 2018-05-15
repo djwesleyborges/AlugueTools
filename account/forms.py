@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 
@@ -109,3 +110,12 @@ class PasswordChangeCustomForm(PasswordChangeForm):
             # self.fields['old_password'].widget.attrs.update({'class': 'form-control'})
             # self.fields['new_password1'].widget.attrs.update({'class': 'form-control'})
             # self.fields['new_password2'].widget.attrs.update({'class': 'form-control'})
+
+
+# class FormLogin(forms.ModelForm):
+#     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+#
+#     class Meta:
+#         model = User
+#         fields = ['username', 'password']
